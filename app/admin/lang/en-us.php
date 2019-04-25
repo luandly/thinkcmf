@@ -57,5 +57,7 @@ return [
     "EDIT_FAILED"             => 'Save failed！',
     "NO_DATA"                 => 'No data!',
     "MOBILE"                  => 'Mobile',
-    "CATEGORY_KEY_HELP_TEXT" => 'ALPHANUM or Underscores'
+    "CATEGORY_KEY_HELP_TEXT" => 'ALPHANUM or Underscores',
+    // 订单模块
+    "ORDER_INPUT" => 'input'
 ];

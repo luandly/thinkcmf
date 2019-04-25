@@ -159,6 +159,12 @@ return [
     "EMAIL_ACTIVATION"                   => '邮箱激活',
     "EMAIL_SUBJECT"                      => '邮件标题',
     "EMAIL_TEMPLATE"                     => '邮件模版',
-    "EMAIL_TEMPLATE_HELP_TEXT"           => '请用{$link}代替激活链接，{$username}代替用户名'
+    "EMAIL_TEMPLATE_HELP_TEXT"           => '请用{$link}代替激活链接，{$username}代替用户名',
+    // 订单模块
+    "ORDER_INPUT" => '订单',
+    "ORDER_TIME" => '订单时间',
+    "ORDER_PAYMENTTYPEINFO" => '交易渠道/账号/附言',
+    "ORDER_TIME" => '交易订单号',
+    "ORDER_TIME" => '订单时间'
 ];
 
