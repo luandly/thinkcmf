@@ -15,9 +15,9 @@ use think\Db;
 
 class PublicController extends AdminBaseController
 {
+
     public function initialize()
-    {
-    }
+    {}
 
     /**
      * 后台登陆界面
@@ -26,17 +26,17 @@ class PublicController extends AdminBaseController
     {
         $loginAllowed = session("__LOGIN_BY_CMF_ADMIN_PW__");
         if (empty($loginAllowed)) {
-            //$this->error('非法登录!', cmf_get_root() . '/');
+            // $this->error('非法登录!', cmf_get_root() . '/');
             return redirect(cmf_get_root() . "/");
         }
 
         $admin_id = session('ADMIN_ID');
-        if (!empty($admin_id)) {//已经登录
+        if (! empty($admin_id)) { // 已经登录
             return redirect(url("admin/Index/index"));
         } else {
             session("__SP_ADMIN_LOGIN_PAGE_SHOWED_SUCCESS__", true);
             $result = hook_one('admin_login');
-            if (!empty($result)) {
+            if (! empty($result)) {
                 return $result;
             }
             return $this->fetch(":login");
@@ -57,14 +57,15 @@ class PublicController extends AdminBaseController
             $this->error('非法登录!', cmf_get_root() . '/');
         }
 
-        $captcha = $this->request->param('captcha');
-        if (empty($captcha)) {
-            $this->error(lang('CAPTCHA_REQUIRED'));
-        }
-        //验证码
-        if (!cmf_captcha_check($captcha)) {
-            $this->error(lang('CAPTCHA_NOT_RIGHT'));
-        }
+        //后台登录页面 模板和控制器中都去掉验证码功能
+        // $captcha = $this->request->param('captcha');
+        // if (empty($captcha)) {
+        // $this->error(lang('CAPTCHA_REQUIRED'));
+        // }
+        // //验证码
+        // if (!cmf_captcha_check($captcha)) {
+        // $this->error(lang('CAPTCHA_NOT_RIGHT'));
+        // }
 
         $name = $this->request->param("username");
         if (empty($name)) {
@@ -74,7 +75,7 @@ class PublicController extends AdminBaseController
         if (empty($pass)) {
             $this->error(lang('PASSWORD_REQUIRED'));
         }
-        if (strpos($name, "@") > 0) {//邮箱登陆
+        if (strpos($name, "@") > 0) { // 邮箱登陆
             $where['user_email'] = $name;
         } else {
             $where['user_login'] = $name;
@@ -82,23 +83,25 @@ class PublicController extends AdminBaseController
 
         $result = Db::name('user')->where($where)->find();
 
-        if (!empty($result) && $result['user_type'] == 1) {
+        if (! empty($result) && $result['user_type'] == 1) {
             if (cmf_compare_password($pass, $result['user_pass'])) {
-                $groups = Db::name('RoleUser')
-                    ->alias("a")
+                $groups = Db::name('RoleUser')->alias("a")
                     ->join('__ROLE__ b', 'a.role_id =b.id')
-                    ->where(["user_id" => $result["id"], "status" => 1])
+                    ->where([
+                    "user_id" => $result["id"],
+                    "status" => 1
+                ])
                     ->value("role_id");
                 if ($result["id"] != 1 && (empty($groups) || empty($result['user_status']))) {
                     $this->error(lang('USE_DISABLED'));
                 }
-                //登入成功页面跳转
+                // 登入成功页面跳转
                 session('ADMIN_ID', $result["id"]);
                 session('name', $result["user_login"]);
-                $result['last_login_ip']   = get_client_ip(0, true);
+                $result['last_login_ip'] = get_client_ip(0, true);
                 $result['last_login_time'] = time();
-                $token                     = cmf_generate_user_token($result["id"], 'web');
-                if (!empty($token)) {
+                $token = cmf_generate_user_token($result["id"], 'web');
+                if (! empty($token)) {
                     session('token', $token);
                 }
                 Db::name('user')->update($result);
