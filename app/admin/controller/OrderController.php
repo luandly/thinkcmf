@@ -32,4 +32,25 @@ class OrderController extends AdminBaseController
         $this->assign("orders", $orders);
         return $this->fetch();
     }
+    
+    /**
+     * 订单模块控制器增加编辑功能
+     * @return unknown
+     */
+    public function edit()
+    {
+        $id = $this->request->param("id", 0, 'intval');
+        $order = Db::name('order')->where([
+            'id' => $id
+        ])->find();
+        $this->assign($order);
+        print_r($order);
+        dump($order);
+        //         $this->assign("order", $order);
+        // echo '<pre>helloe'.print_r($cart_wrapper, TRUE).'</pre>'; value="{$user_email}"
+        echo '<pre>hello--', ROOT_PATH, '--2world</pre>';
+        echo '<pre>hello--', $id, '--2world</pre>';
+        echo '<pre>hello--', $order['verifyName'], '--world</pre>';
+        return $this->fetch();
+    }
 }
