@@ -19,11 +19,17 @@ class OrderController extends AdminBaseController
     public function index()
     {
         echo '<pre>', ROOT_PATH, '</pre>';
-//         $routeModel = new RouteModel();
-//         $routes = Db::name('order')->order("billTime asc")->select();
-//         echo '<pre>', $routes, '</pre>';
-//         $routeModel->getRoutes(true);
-//         $this->assign("routes", $routes);
+        // 引入实体类
+        $orderModel = new OrderModel();
+        // 数据查询
+        $orders = Db::name('order')->order("id asc")->select();
+        $orderModel1 = OrderModel::get(1);
+        echo '<pre>', $orderModel, '</pre>';
+        echo '<pre>', $orders, '</pre>';
+        echo '<pre>', $orderModel1['paymentType'], '</pre>';
+        // $routeModel->getRoutes(true);
+        // 把查询的数据 放到对应的前端中去
+        $this->assign("orders", $orders);
         return $this->fetch();
     }
 }
