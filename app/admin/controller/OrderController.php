@@ -18,18 +18,22 @@ class OrderController extends AdminBaseController
 
     public function index()
     {
-        echo '<pre>', ROOT_PATH, '</pre>';
-        // 引入实体类
-        $orderModel = new OrderModel();
-        // 数据查询
-        $orders = Db::name('order')->order("id asc")->select();
-        $orderModel1 = OrderModel::get(1);
-        echo '<pre>', $orderModel, '</pre>';
-        echo '<pre>', $orders, '</pre>';
-        echo '<pre>', $orderModel1['paymentType'], '</pre>';
+//         echo '<pre>', ROOT_PATH, '</pre>';
+//         // 引入实体类
+//         $orderModel = new OrderModel();
+//         // 数据查询
+//         $orders = Db::name('order')->order("id asc")->select();
+//        $orders = Db::name('order')->order("id asc")->select();
+        $orders = Db::name('order')->order("id asc")->paginate(10);
+//         $orderModel1 = OrderModel::get(1);
+//         echo '<pre>', $orderModel, '</pre>';
+//         echo '<pre>', $orders, '</pre>';
+//         echo '<pre>', $orderModel1['paymentType'], '</pre>';
         // $routeModel->getRoutes(true);
+        $page=$orders->render();
         // 把查询的数据 放到对应的前端中去
         $this->assign("orders", $orders);
+        $this->assign("page", $page);
         return $this->fetch();
     }
     
