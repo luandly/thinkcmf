@@ -1,1 +1,27 @@
+//在当前目录下  新建一个文件夹 文件夹名称是:conf
+//然后当前文件的 文件名是database.php
+<?php
+/**
+ * 配置文件
+ */
 
+return [
+    // 数据库类型
+    'type'     => 'mysql',
+    // 服务器地址
+    'hostname' => '10.5.45.107',
+    // 数据库名
+    'database' => 'jpmeitu',
+    // 用户名
+    'username' => 'root',
+    // 密码
+    'password' => 'root',
+    // 端口
+    'hostport' => '3306',
+    // 数据库编码默认采用utf8
+    'charset'  => 'utf8mb4',
+    // 数据库表前缀
+    'prefix' => 'meitu_',
+    "authcode" => 'weJMH29ySSZsCgwgV6'
+    //#COOKIE_PREFIX#
+];
