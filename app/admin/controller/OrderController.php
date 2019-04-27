@@ -2,7 +2,7 @@
 namespace app\admin\controller;
 
 use cmf\controller\AdminBaseController;
-use app\admin\model\RouteModel;
+use app\admin\model\OrderModel;
 use think\Db;
 
 /**
