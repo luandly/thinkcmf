@@ -35,7 +35,28 @@
 					<th width="130">{:lang('ACTIONS')}</th>
 				</tr>
 			</thead>
-				</table>
+			<tbody>
+				<php> $statuses=array('0'=>"已禁用","1"=>"已启用");
+				$types=array('1'=>"自定义","2"=>"别名定义"); </php>
+				<foreach name="orders" item="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.accountNum}</td>
+					<td>{$vo.verifyName}</td>
+					<td>{$statuses[$vo['billStatus']]}</td>
+					<td><eq name="vo.id" value="2"> 编辑 禁用 删除 <else /> <a
+							href="javascript:parent.openIframeLayer('{:url('order/edit',array('id'=>$vo['id']))}','钩子{$vo.billStatus}插件管理',{});">编辑</a>
+						<eq name="vo.billStatus" value="1"> <a
+							href="{:url('route/ban',array('id'=>$vo['id']))}"
+							class="js-ajax-dialog-btn" data-msg="确定禁用吗？">禁用</a> <else /> <a
+							href="{:url('route/open',array('id'=>$vo['id']))}"
+							class="js-ajax-dialog-btn" data-msg="确定启用吗？">启用</a> </eq> <a
+							href="{:url('order/delete',array('id'=>$vo['id']))}"
+							class="js-ajax-delete">删除</a> </eq></td>
+				</tr>
+				</foreach>
+			</tbody>
+		</table>
 		<div class="pagination">{$page}</div>
 	</div>
 	<script src="__STATIC__/js/admin.js"></script>
