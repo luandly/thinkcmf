@@ -59,6 +59,17 @@ class OrderController extends AdminBaseController
         // echo '<pre>hello--', $order['verifyName'], '--world</pre>';
         return $this->fetch();
     }
+    
+    /**
+     * 修改保存 
+     */
+    public function editPost()
+    {
+        $data       = $this->request->param();
+        $orderModel = new OrderModel();       
+        $orderModel->allowField(true)->isUpdate(true)->save($data);        
+        $this->success("保存成功！");
+    }
 
     /**
      * 添加一项
