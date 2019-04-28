@@ -7,8 +7,9 @@ use think\Db;
 
 /**
  * themes/admin_simpleboot3/admin\order\index.html
+ *
  * @author luandly
- * 增加一项 订单模块
+ *         增加一项 订单模块
  */
 class OrderController extends AdminBaseController
 {
@@ -18,27 +19,28 @@ class OrderController extends AdminBaseController
 
     public function index()
     {
-//         echo '<pre>', ROOT_PATH, '</pre>';
-//         // 引入实体类
-//         $orderModel = new OrderModel();
-//         // 数据查询
-//         $orders = Db::name('order')->order("id asc")->select();
-//        $orders = Db::name('order')->order("id asc")->select();
+        // echo '<pre>', ROOT_PATH, '</pre>';
+        // // 引入实体类
+        // $orderModel = new OrderModel();
+        // // 数据查询
+        // $orders = Db::name('order')->order("id asc")->select();
+        // $orders = Db::name('order')->order("id asc")->select();
         $orders = Db::name('order')->order("id asc")->paginate(10);
-//         $orderModel1 = OrderModel::get(1);
-//         echo '<pre>', $orderModel, '</pre>';
-//         echo '<pre>', $orders, '</pre>';
-//         echo '<pre>', $orderModel1['paymentType'], '</pre>';
+        // $orderModel1 = OrderModel::get(1);
+        // echo '<pre>', $orderModel, '</pre>';
+        // echo '<pre>', $orders, '</pre>';
+        // echo '<pre>', $orderModel1['paymentType'], '</pre>';
         // $routeModel->getRoutes(true);
-        $page=$orders->render();
+        $page = $orders->render();
         // 把查询的数据 放到对应的前端中去
         $this->assign("orders", $orders);
         $this->assign("page", $page);
         return $this->fetch();
     }
-    
+
     /**
      * 订单模块控制器增加编辑功能
+     *
      * @return unknown
      */
     public function edit()
@@ -48,13 +50,13 @@ class OrderController extends AdminBaseController
             'id' => $id
         ])->find();
         $this->assign($order);
-        print_r($order);
-        dump($order);
-        //         $this->assign("order", $order);
+        // print_r($order);
+        // dump($order);
+        // $this->assign("order", $order);
         // echo '<pre>helloe'.print_r($cart_wrapper, TRUE).'</pre>'; value="{$user_email}"
-        echo '<pre>hello--', ROOT_PATH, '--2world</pre>';
-        echo '<pre>hello--', $id, '--2world</pre>';
-        echo '<pre>hello--', $order['verifyName'], '--world</pre>';
+        // echo '<pre>hello--', ROOT_PATH, '--2world</pre>';
+        // echo '<pre>hello--', $id, '--2world</pre>';
+        // echo '<pre>hello--', $order['verifyName'], '--world</pre>';
         return $this->fetch();
     }
 }
