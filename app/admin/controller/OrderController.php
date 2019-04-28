@@ -90,7 +90,10 @@ class OrderController extends AdminBaseController
     {
         $data = $this->request->param();
         $orderModel = new OrderModel();
-        $orderModel->allowField(true)->save($data);
+        $paymentTypeInfo =$_POST['paymentTypeInfo'];
+        $verifyName =$_POST['verifyName'];
+        DB::name("order")->insert(["paymentTypeInfo" => $paymentTypeInfo, "verifyName" => $uid]);
+        //$orderModel->allowField(true)->save($data);
         // $this->success("添加成功！", url("Route/index", ['id' => $orderModel->id]));
         $this->success("添加成功！", url("order/index"));
     }
