@@ -59,4 +59,44 @@ class OrderController extends AdminBaseController
         // echo '<pre>hello--', $order['verifyName'], '--world</pre>';
         return $this->fetch();
     }
+
+    /**
+     * 添加一项
+     *
+     * @return unknown
+     */
+    public function add()
+    {
+        return $this->fetch();
+    }
+
+    /**
+     * 添加 保存数据
+     *
+     * @return unknown
+     */
+    public function addPost()
+    {
+        $data = $this->request->param();
+        $orderModel = new OrderModel();
+        $orderModel->allowField(true)->save($data);
+        // $this->success("添加成功！", url("Route/index", ['id' => $orderModel->id]));
+        $this->success("添加成功！", url("order/index"));
+    }
+    
+    /**
+     * 删除
+     */
+    public function delete()
+    {
+        $id = $this->request->param('id', 0, 'intval');
+        if ($id == 1) {
+            $this->error("这是第一条数据！请手下留情");
+        }
+        if (Db::name('order')->delete($id) !== false) {
+            $this->success("删除成功！".$id);
+        } else {
+            $this->error("删除失败！".$id);
+        }
+    }
 }
