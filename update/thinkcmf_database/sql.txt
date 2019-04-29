@@ -1,0 +1,35 @@
+CREATE TABLE `meitu_order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `billTime` date DEFAULT NULL COMMENT '订单时间',
+  `paymentTypeInfo` varchar(100) DEFAULT '' COMMENT '交易渠道/账号/附言',
+  `billNo` varchar(25) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT '' COMMENT '交易订单号',
+  `accountNum` varchar(100) DEFAULT '' COMMENT '充值账号',
+  `uid` smallint(6) DEFAULT '0',
+  `paymentType` varchar(50) DEFAULT '' COMMENT '充值方式',
+  `billStatus` tinyint(1) DEFAULT '0' COMMENT '订单状态 ',
+  `userName` varchar(50) DEFAULT '' COMMENT '审核人',
+  `verifyName` varchar(50) DEFAULT '' COMMENT '制单人',
+  `totalAmount` double DEFAULT '0' COMMENT '总金额',
+  `amount` double DEFAULT '0' COMMENT '折扣后金额',
+  `rpAmount` double DEFAULT '0' COMMENT '存款金额',
+  `description` varchar(100) DEFAULT '' COMMENT '备注',
+  `disRate` double DEFAULT '0' COMMENT '折扣率',
+  `disAmount` double DEFAULT '0' COMMENT '折扣金额',
+  `totalQty` double DEFAULT '0' COMMENT '总数量',
+  `modifyTime` datetime DEFAULT NULL COMMENT '更新时间',
+  `hxStateCode` tinyint(4) DEFAULT '0' COMMENT '0未付款  1部分付款  2全部付款',
+  `salesId` smallint(6) DEFAULT '0' COMMENT '销售人员ID',
+  `postData` text COMMENT '提交订单明细 ',
+  `isDelete` tinyint(1) DEFAULT '0' COMMENT '1删除  0正常',
+  `deliveryDate` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=utf8mb4 COMMENT='订单模块表';
+
+/**订单模块表  插入两条数据**/
+INSERT INTO `jpmeitu`.`meitu_order`(uid,billStatus,totalAmount) VALUES(0,1),(0,1),(0,1);
+INSERT INTO meitu_order(accountNum,billStatus,totalAmount) VALUES('1','1','1');
+
+
+/**系统模块*/
+INSERT INTO `meitu_admin_menu` VALUES(165,0,1,1,10000,'admin','SystemCase','default','','系统模块','','');
+INSERT INTO `meitu_auth_rule` VALUES (165,1,'admin','admin_url','admin/SystemCase/default','','系统模块','');
