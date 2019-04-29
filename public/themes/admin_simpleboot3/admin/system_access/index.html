@@ -1,0 +1,45 @@
+<include file="public@header" />
+</head>
+<!-- http://10.5.45.107/newtopup/public/admin/index/index.html#/newtopup/public/admin/user/index.html -->
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">			
+			<li >系统模块</a></li>
+			<li class="active"><a href="{:url('systemAccess/add')}">{:lang('ADMIN_USER_INDEX')}</a></li>
+		</ul>
+		<form class="well form-inline margin-top-20" method="post"
+			action="{:url('User/index')}">
+			全局搜索: <input type="text" class="form-control" name="user_login"
+				style="width: 120px;" value="{:input('request.user_login/s','')}"
+				placeholder="请输入{:lang('ORDER_INPUT')}">    &nbsp;&#9;
+				订单状态: <input type="text"
+				class="form-control" name="user_email" style="width: 120px;"
+				value="{:input('request.user_email/s','')}"
+				placeholder="请输入"> &nbsp;&#9; 
+				充值账号: <input type="text"
+				class="form-control" name="user_email" style="width: 120px;"
+				value="{:input('request.user_email/s','')}"
+				placeholder="请输入"> 
+				<input type="submit"
+				class="btn btn-primary" value="搜索" /> <a class="btn btn-danger"
+				href="{:url('User/index')}">清空</a>
+		</form>
+			<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>{:lang('USERNAME')}</th>
+					<th>{:lang('LAST_LOGIN_IP')}</th>
+					<th>{:lang('LAST_LOGIN_TIME')}</th>
+					<th>{:lang('EMAIL')}</th>
+					<th>{:lang('STATUS')}</th>
+					<th width="130">{:lang('ACTIONS')}</th>
+				</tr>
+			</thead>
+			
+		</table>
+		
+	</div>
+	<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>

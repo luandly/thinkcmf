@@ -6,7 +6,7 @@ use app\admin\model\OrderModel;
 use think\Db;
 
 /**
- *
+ *模板文件不存在:/www/wwwroot/thinkcmf/public/themes/admin_simpleboot3/admin/system_access/index.html
  * @author luandly
  *         增加一项 系统模块
  */
@@ -21,7 +21,7 @@ class SystemAccessController extends AdminBaseController
         // $content = hook_one('admin_user_add_view');
          echo '<pre>', ROOT_PATH, '</pre>';
 
-//        return $this->fetch();
+       return $this->fetch();
     }
 
     /**
