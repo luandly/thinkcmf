@@ -31,5 +31,9 @@ INSERT INTO meitu_order(accountNum,billStatus,totalAmount) VALUES('1','1','1');
 
 
 /**系统模块*/
-INSERT INTO `meitu_admin_menu` VALUES(165,0,1,1,10000,'admin','SystemCase','default','','系统模块','','');
+INSERT INTO `meitu_admin_menu` VALUES(165,0,1,1,40,'admin','SystemCase','default','','系统模块','','');
 INSERT INTO `meitu_auth_rule` VALUES (165,1,'admin','admin_url','admin/SystemCase/default','','系统模块','');
+
+/**收款账户设置*/
+INSERT INTO `meitu_admin_menu` VALUES(166,165,1,1,10000,'admin','SystemAccess','index','','收款账户设置','','');
+INSERT INTO `meitu_auth_rule` VALUES (166,1,'admin','admin_url','admin/SystemAccess/index','','收款账户设置','');
