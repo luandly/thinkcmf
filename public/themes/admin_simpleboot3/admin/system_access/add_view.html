@@ -1,0 +1,85 @@
+<include file="public@header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a>系统模块</a></li>
+			<li ><a href="{:url('systemAccess/index')}">{:lang('ADMIN_USER_INDEX')}</a></li>
+			<li class="active"><a href="{:url('systemAccess/addView')}">{:lang('ADD')}{:lang('ORDER_INPUT')}</a></li>
+			<li ><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADMIN_USER_INDEX')}</a></li>
+		</ul>
+		<form method="post"
+			class="form-horizontal js-ajax-form  margin-top-20"
+			action="{:url('order/addpost')}">
+			<div class="form-group">
+				<label for="input-channelType" class="col-sm-2 control-label"><span
+					class="form-required">*</span>收款渠道类别</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-channelType"
+						name="channelType">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="input-channelAccountNum" class="col-sm-2 control-label"><span
+					class="form-required">*</span>收款渠道账户</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-channelAccountNum"
+						name="channelAccountNum" placeholder="******">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="input-description" class="col-sm-2 control-label"><span
+					class="form-required">*</span>收款账户备注</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-description"
+						name="description" placeholder="******">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="input-grandTotalDepositTimes" class="col-sm-2 control-label"><span
+					class="form-required">*</span>累计存款次数</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-grandTotalDepositTimes"
+						name="grandTotalDepositTimes">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="input-grandTotalAmountDeposited" class="col-sm-2 control-label"><span
+					class="form-required">*</span>累计存款金额</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-grandTotalAmountDeposited"
+						name="grandTotalAmountDeposited">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="input-usedStatus" class="col-sm-2 control-label"><span
+					class="form-required">*</span>使用状态</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-usedStatus"
+						name="usedStatus">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="input-createTime" class="col-sm-2 control-label"><span
+					class="form-required">*</span>账户创建时间</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-createTime"
+						name="createTime">
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
