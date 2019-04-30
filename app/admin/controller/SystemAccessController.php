@@ -2,7 +2,6 @@
 namespace app\admin\controller;
 
 use cmf\controller\AdminBaseController;
-use app\admin\model\OrderModel;
 use think\Db;
 
 /**
@@ -19,9 +18,12 @@ class SystemAccessController extends AdminBaseController
     public function index()
     {
         // $content = hook_one('admin_user_add_view');
-         echo '<pre>', ROOT_PATH, '</pre>';
-
-       return $this->fetch();
+//        模板文件不存在:themes/admin_simpleboot3/admin\system_access\index.html
+        $gatheringAccountSettings = Db::name('gatheringAccountSetting')->order("id desc")->paginate(10);
+        $page = $gatheringAccountSettings->render();
+        $this->assign("gathering_account_setting", $gatheringAccountSettings);
+        $this->assign("page", $page);
+        return $this->fetch();
     }
 
     /**
@@ -32,10 +34,7 @@ class SystemAccessController extends AdminBaseController
     public function addView()
     {
         // $content = hook_one('admin_user_add_view');
-
-        // if (! empty($content)) {
-        // return $content;
-        // }
+//        模板文件不存在:themes/admin_simpleboot3/admin\system_access\add_view.html
         return $this->fetch();
     }
 
@@ -117,5 +116,16 @@ class SystemAccessController extends AdminBaseController
         } else {
             $this->error("删除失败！");
         }
+    }
+
+    /**
+     * 金流设置
+     * @return mixed
+     */
+    public function channelTypeSetting()
+    {
+        //        方法不存在:app\admin\controller\SystemAccessController->channeltypesetting()
+//        模板文件不存在:themes/admin_simpleboot3/admin\system_access\channel_type_setting.html
+        return $this->fetch();
     }
 }
