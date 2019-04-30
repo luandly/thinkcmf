@@ -50,19 +50,24 @@ class SystemAccessController extends AdminBaseController
     public function addPost()
     {
         $data = $this->request->param();
-        // dump($data);
-        $paymentTypeInfo = $_POST['paymentTypeInfo'];
-        $verifyName = $_POST['verifyName'];
-        $paymentType = $_POST['paymentType'];
-        $accountNum = $_POST['accountNum'];
-        Db::name('order')->insert([
-            "paymentTypeInfo" => $paymentTypeInfo,
-            "verifyName" => $verifyName,
-            "accountNum" => $accountNum,
-            "paymentType" => $paymentType
+//         dump($data);
+        $channelType = $_POST['channel_type'];
+        $channelAccountNum = $_POST['channel_account_num'];
+        $description = $_POST['description'];
+        $grandTotalDepositTimes = $_POST['grand_total_deposit_times'];
+        $grandTotalAmountDeposited = $_POST['grand_total_amount_deposited'];
+        $usedStatus = $_POST['used_status'];
+        $createTime = $_POST['create_time'];
+        Db::name('gathering_account_setting')->insert([
+            "channel_type" => $channelType,
+            "channel_account_num" => $channelAccountNum,
+            "description" => $description,
+            "grand_total_deposit_times" => $grandTotalDepositTimes,
+            "grand_total_amount_deposited" => $grandTotalAmountDeposited,
+            "used_status" => $usedStatus,
+            "create_time" => $createTime
         ]);
-        // Db::name('order')->insert($hook);
-        return $this->success("新增成功！", url("order/index"));
+        return $this->success("新增成功！", url("systemAccess/index"));
     }
 
     // 编辑功能
