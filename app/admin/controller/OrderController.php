@@ -92,8 +92,10 @@ class OrderController extends AdminBaseController
         $orderModel = new OrderModel();
         $paymentTypeInfo =$_POST['paymentTypeInfo'];
         $verifyName =$_POST['verifyName'];
+        $accountNum = $_POST['accountNum'];
         DB::name("order")->insert([
             "paymentTypeInfo" => $paymentTypeInfo,
+            "accountNum" => $accountNum,
             "verifyName" => $verifyName
         ]);
         //$orderModel->allowField(true)->save($data);
