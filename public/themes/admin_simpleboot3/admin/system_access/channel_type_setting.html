@@ -9,16 +9,16 @@
 		<li ><a href="{:url('systemAccess/addView')}"> 新建渠道</a></li>
 		<li class="active"><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADD')}金流设置{:lang('ACTIONS')}</a></li>
 	</ul>
+
+	<div class="form-group">
+		<label  class="col-md-12 control-label">可拖动账号在该支付方式下进行排序。使用时，系统将自动跳过已停用和被冻结账户。重新开启或解冻后，可继续按设置的顺序使用。</label>
+	</div>
 	<table class="table table-hover table-bordered">
 		<thead>
 		<tr>
 			<th width="50">ID</th>
-			<th>{:lang('USERNAME')}</th>
-			<th>{:lang('LAST_LOGIN_IP')}</th>
-			<th>{:lang('LAST_LOGIN_TIME')}</th>
-			<th>{:lang('EMAIL')}</th>
-			<th>{:lang('STATUS')}</th>
-			<th width="130">{:lang('ACTIONS')}</th>
+			<th width="180">收款渠道类别</th>
+			<th width="130">收款渠道账户</th>
 		</tr>
 		</thead>
 	</table>
