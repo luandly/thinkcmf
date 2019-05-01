@@ -5,7 +5,8 @@ use cmf\controller\AdminBaseController;
 use think\Db;
 
 /**
- *模板文件不存在:/www/wwwroot/thinkcmf/public/themes/admin_simpleboot3/admin/system_access/index.html
+ * 模板文件不存在:/www/wwwroot/thinkcmf/public/themes/admin_simpleboot3/admin/system_access/index.html
+ *
  * @author luandly
  *         增加一项 系统模块
  */
@@ -18,7 +19,7 @@ class SystemAccessController extends AdminBaseController
     public function index()
     {
         // $content = hook_one('admin_user_add_view');
-//        模板文件不存在:themes/admin_simpleboot3/admin\system_access\index.html
+        // 模板文件不存在:themes/admin_simpleboot3/admin\system_access\index.html
         $gatheringAccountSettings = Db::name('gatheringAccountSetting')->order("id desc")->paginate(10);
         $page = $gatheringAccountSettings->render();
         $this->assign("gathering_account_setting", $gatheringAccountSettings);
@@ -34,7 +35,7 @@ class SystemAccessController extends AdminBaseController
     public function addView()
     {
         // $content = hook_one('admin_user_add_view');
-//        模板文件不存在:themes/admin_simpleboot3/admin\system_access\add_view.html
+        // 模板文件不存在:themes/admin_simpleboot3/admin\system_access\add_view.html
         return $this->fetch();
     }
 
@@ -50,7 +51,7 @@ class SystemAccessController extends AdminBaseController
     public function addPost()
     {
         $data = $this->request->param();
-//         dump($data);
+        // dump($data);
         $channelType = $_POST['channel_type'];
         $channelAccountNum = $_POST['channel_account_num'];
         $description = $_POST['description'];
@@ -74,17 +75,10 @@ class SystemAccessController extends AdminBaseController
     public function edit()
     {
         $id = $this->request->param("id", 0, 'intval');
-        $order = Db::name('order')->where([
+        $gathering_account_setting = Db::name('gathering_account_setting')->where([
             'id' => $id
         ])->find();
-        $this->assign($order);
-        // print_r($order);
-        // dump($order);
-        // $this->assign("order", $order);
-        // echo '<pre>helloe'.print_r($cart_wrapper, TRUE).'</pre>'; value="{$user_email}"
-        // echo '<pre>hello--', ROOT_PATH, '--2world</pre>';
-        // echo '<pre>hello--', $id, '--2world</pre>';
-        // echo '<pre>hello--', $order['verifyName'], '--world</pre>';
+        $this->assign($gathering_account_setting);
         return $this->fetch();
     }
 
@@ -125,12 +119,21 @@ class SystemAccessController extends AdminBaseController
 
     /**
      * 金流设置
+     *
      * @return mixed
      */
     public function channelTypeSetting()
     {
-        //        方法不存在:app\admin\controller\SystemAccessController->channeltypesetting()
-//        模板文件不存在:themes/admin_simpleboot3/admin\system_access\channel_type_setting.html
+        // 方法不存在:app\admin\controller\SystemAccessController->channeltypesetting()
+        // 模板文件不存在:themes/admin_simpleboot3/admin\system_access\channel_type_setting.html
+        return $this->fetch();
+    }
+
+    public function addNewView()
+    {
+        // 模板文件不存在:themes/admin_simpleboot3/admin\system_access\add_new_view.html //addNewView
+        // 模板文件不存在:themes/admin_simpleboot3/admin\system_access\addnewview.html //addnewview
+        // 方法不存在:app\admin\controller\SystemAccessController->addnewview()
         return $this->fetch();
     }
 }
