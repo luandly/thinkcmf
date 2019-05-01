@@ -84,23 +84,17 @@ class SystemAccessController extends AdminBaseController
 
     /**
      * 修改后保存
-     * array(3) {
-     * ["paymentTypeInfo"] => string(20) "微信/Jarvan/测试"
-     * ["verifyName"] => string(6) "Jarvan"
-     * ["id"] => string(1) "1"
-     * }
      */
     public function editPost()
     {
         $data = $this->request->param();
         // dump($data);
-        $create_result = Db::name('order')->update($data);
+        $create_result = Db::name('gatheringAccountSetting')->update($data);
         if ($create_result !== false) {
-            return $this->success("保存成功！");
-            // return $this->success("保存成功！", url("order/index"));
+            return $this->success("保存成功！", url("systemAccess/index"));
         } else {
-            // $this->error("保存失败！");
-            echo '<pre>保存失败--', $data['paymentTypeInfo'], '--2world</pre>';
+            return $this->error("保存失败！", url("systemAccess/index"));
+            // echo '<pre>保存失败--', $data['paymentTypeInfo'], '--2world</pre>';
         }
     }
 
