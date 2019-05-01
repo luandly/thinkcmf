@@ -1,0 +1,43 @@
+<include file="public@header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a>系统模块</a></li>
+			<li><a href="{:url('blackWhiteList/index')}">收款账户设置</a></li>
+			<li class="active"><a
+				href="{:url('blackWhiteList/addWhiteListView')}">{:lang('ADD')}新建白名单</a></li>
+		</ul>
+		<form method="post"
+			class="form-horizontal js-ajax-form  margin-top-20"
+			action="{:url('blackWhiteList/addWhiteListPost')}">
+			<div class="form-group">
+				<label for="input-channelType" class="col-sm-2 control-label">IP</label>
+				<div class="col-md-6 col-sm-10">
+					<input type="text" class="form-control" id="input-channelType"
+						name="ip">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="js-smtpsecure" class="col-sm-2 control-label">状态</label>
+				<div class="col-md-6 col-sm-10">
+					<select name="account_status" id="js-smtpsecure"
+						class="form-control">
+						<option value="1">白名单</option>
+						<option value="1">白名单</option>
+						<option value="0">黑名单</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
