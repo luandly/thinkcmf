@@ -4,27 +4,23 @@
 <body>
 <div class="wrap js-check-wrap">
     <ul class="nav nav-tabs">
-        <li ><a>系统模块{$page}</a></li>
+        <li><a>系统模块{$page}</a></li>
         <li class="active"><a href="{:url('systemAccess/index')}">收款账户设置</a></li>
-        <li ><a href="{:url('systemAccess/addView')}"> 新建渠道</a></li>
+        <li><a href="{:url('systemAccess/addView')}"> 新建渠道</a></li>
         <li><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADD')}金流设置{:lang('ACTIONS')}</a></li>
     </ul>
     <form class="well form-inline margin-top-20" method="post"
           action="{:url('User/index')}">
         全局搜索: <input type="text" class="form-control" name="user_login"
                      style="width: 120px;" value="{:input('request.user_login/s','')}"
-                     placeholder="请输入{:lang('ORDER_INPUT')}">    &nbsp;&#9;
-        订单状态: <input type="text"
-                     class="form-control" name="user_email" style="width: 120px;"
-                     value="{:input('request.user_email/s','')}"
-                     placeholder="请输入"> &nbsp;&#9;
-        充值账号: <input type="text"
-                     class="form-control" name="user_email" style="width: 120px;"
-                     value="{:input('request.user_email/s','')}"
-                     placeholder="请输入">
-        <input type="submit"
-               class="btn btn-primary" value="搜索" /> <a class="btn btn-danger"
-                                                        href="{:url('User/index')}">清空</a>
+                     placeholder="请输入{:lang('ORDER_INPUT')}"> &nbsp;&#9; 订单状态: <input
+            type="text" class="form-control" name="user_email"
+            style="width: 120px;" value="{:input('request.user_email/s','')}"
+            placeholder="请输入"> &nbsp;&#9; 充值账号: <input type="text"
+                                                       class="form-control" name="user_email" style="width: 120px;"
+                                                       value="{:input('request.user_email/s','')}" placeholder="请输入">
+        <input type="submit" class="btn btn-primary" value="搜索" /> <a
+            class="btn btn-danger" href="{:url('User/index')}">清空</a>
     </form>
     <table class="table table-hover table-bordered">
         <thead>
@@ -55,17 +51,14 @@
                 <td>{$vo.used_status}</td>
                 <td>{$vo.is_active}</td>
                 <td>{$vo.description}</td>
-                <td><eq name="vo.id" value="2"> 编辑 禁用 删除
-                    <else/>
-                    <a
-                            href="{:url('systemAccess/edit',array('id'=>$vo['id']))}">编辑</a>
-                    <eq name="vo.is_active" value="1"> <a
-                            href="{:url('route/ban',array('id'=>$vo['id']))}"
-                            class="js-ajax-dialog-btn" data-msg="确定禁用吗？">禁用</a> <else /> <a
-                            href="{:url('systemAccess/addnewview',array('id'=>$vo['id']))}"
-                            >设置</a> </eq> <a
-                            href="{:url('order/delete',array('id'=>$vo['id']))}"
-                            class="js-ajax-delete">删除</a> </eq></td>
+                <td><eq name="vo.id" value="2"> 编辑 禁用 删除 <else /> <a
+                        href="{:url('systemAccess/edit',array('id'=>$vo['id']))}">编辑</a>
+                    <eq name="vo.is_active" value="1">
+                        <a href="{:url('systemAccess/ban',array('id'=>$vo['id']))}"
+                           class="js-ajax-dialog-btn" data-msg="确定禁用吗？">禁用</a> <else /> <a
+                            href="{:url('systemAccess/addnewview',array('id'=>$vo['id']))}">设置</a></eq>
+                    <a href="{:url('systemAccess/delete',array('id'=>$vo['id']))}"
+                       class="js-ajax-delete">删除</a></eq></td>
             </tr>
         </foreach>
         </tbody>

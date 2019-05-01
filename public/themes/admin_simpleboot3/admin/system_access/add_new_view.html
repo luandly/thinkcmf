@@ -1,77 +1,81 @@
 <include file="public@header" />
 </head>
-<!--列表项中的设置功能按钮-->
 <body>
-	<div class="wrap">
-		<ul class="nav nav-tabs">
-			<li ><a>系统模块</a></li>
-			<li ><a href="{:url('systemAccess/index')}">收款账户设置</a></li>
-			<li ><a href="{:url('systemAccess/addView')}">新建渠道</a></li>
-			<li ><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADD')}金流设置{:lang('ACTIONS')}</a></li>
-			<li class="active"><a href="{:url('systemAccess/addnewview')}">收款账户{:lang('SETTING')}</a></li>
-		</ul>
-		<form method="post"
-			class="form-horizontal js-ajax-form  margin-top-20"
-			action="{:url('systemAccess/addPost')}">
-			<div class="form-group">
-				<label for="input-channelType" class="col-sm-2 control-label"><span
+<div class="wrap">
+	<ul class="nav nav-tabs">
+		<li><a>系统模块</a></li>
+		<li><a href="{:url('systemAccess/index')}">收款账户设置</a></li>
+		<li><a href="{:url('systemAccess/addView')}">新建渠道</a></li>
+		<li><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADD')}金流设置{:lang('ACTIONS')}</a></li>
+		<li class="active"><a href="{:url('systemAccess/addnewview')}">收款账户{:lang('SETTING')}</a></li>
+	</ul>
+	<form method="post"
+		  class="form-horizontal js-ajax-form  margin-top-20"
+		  action="{:url('systemAccess/editPost')}">
+		<div class="form-group">
+			<label for="input-channelType" class="col-sm-2 control-label"><span
 					class="form-required">*</span>商户请求地址</label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-channelType"
-						name="channel_type">
-				</div>
+			<div class="col-md-6 col-sm-10">
+				<input type="text" class="form-control" id="input-channelType"
+					   value="{$merchant_url}" name="merchant_url">
 			</div>
-			<div class="form-group">
-				<label for="input-channelAccountNum" class="col-sm-2 control-label"><span
+		</div>
+		<div class="form-group">
+			<label for="input-channelAccountNum" class="col-sm-2 control-label"><span
 					class="form-required">*</span>商户私钥</label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-channelAccountNum"
-						name="channel_account_num" placeholder="******">
-				</div>
+			<div class="col-md-6 col-sm-10">
+				<input type="text" class="form-control"
+					   id="input-channelAccountNum" value="{$merchant_pri_key}"
+					   name="merchant_pri_key" placeholder="******">
 			</div>
-			<div class="form-group">
-				<label for="input-description" class="col-sm-2 control-label"><span
+		</div>
+		<div class="form-group">
+			<label for="input-description" class="col-sm-2 control-label"><span
 					class="form-required">*</span>商户公钥</label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-description"
-						name="description" placeholder="******">
-				</div>
+			<div class="col-md-6 col-sm-10">
+				<input type="text" class="form-control" id="input-description"
+					   value="{$merchant_pub_key}" name="merchant_pub_key"
+					   placeholder="******">
 			</div>
+		</div>
 
-			<div class="form-group">
-				<label for="input-grandTotalDepositTimes" class="col-sm-2 control-label"><span
-					class="form-required">*</span>商户平台公钥</label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-grandTotalDepositTimes"
-						name="grand_total_deposit_times">
-				</div>
+		<div class="form-group">
+			<label for="input-grandTotalDepositTimes"
+				   class="col-sm-2 control-label"><span class="form-required">*</span>商户平台公钥</label>
+			<div class="col-md-6 col-sm-10">
+				<input type="text" class="form-control"
+					   id="input-grandTotalDepositTimes" value="{$merchant_man_pub_key}"
+					   name="merchant_man_pub_key">
 			</div>
+		</div>
 
-			<div class="form-group">
-				<label for="input-grandTotalAmountDeposited" class="col-sm-2 control-label"><span
-					class="form-required">*</span>商户密钥</label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-grandTotalAmountDeposited"
-						name="grand_total_amount_deposited">
-				</div>
+		<div class="form-group">
+			<label for="input-grandTotalAmountDeposited"
+				   class="col-sm-2 control-label"><span class="form-required">*</span>商户密钥</label>
+			<div class="col-md-6 col-sm-10">
+				<input type="text" class="form-control"
+					   id="input-grandTotalAmountDeposited" value="{$merchant_sec_key}"
+					   name="merchant_sec_key">
 			</div>
+		</div>
 
-			<div class="form-group">
-				<label for="input-usedStatus" class="col-sm-2 control-label"><span
+		<div class="form-group">
+			<label for="input-usedStatus" class="col-sm-2 control-label"><span
 					class="form-required">*</span>商户编号</label>
-				<div class="col-md-6 col-sm-10">
-					<input type="text" class="form-control" id="input-usedStatus"
-						name="used_status">
-				</div>
+			<div class="col-md-6 col-sm-10">
+				<input type="text" class="form-control" id="input-usedStatus"
+					   value="{$merchant_code}" name="merchant_code">
 			</div>
+		</div>
 
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
-				</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<input type="hidden" name="id" value="{$id}">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:lang('OK')}</button>
 			</div>
-		</form>
-	</div>
-	<script src="__STATIC__/js/admin.js"></script>
+		</div>
+	</form>
+</div>
+<script src="__STATIC__/js/admin.js"></script>
 </body>
 </html>

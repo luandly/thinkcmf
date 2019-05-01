@@ -104,7 +104,7 @@ class SystemAccessController extends AdminBaseController
     public function delete()
     {
         $id = $this->request->param('id', 0, 'intval');
-        if (Db::name('order')->delete($id) !== false) {
+        if (Db::name('gatheringAccountSetting')->delete($id) !== false) {
             $this->success("删除成功" . $id);
         } else {
             $this->error("删除失败！");
@@ -125,6 +125,12 @@ class SystemAccessController extends AdminBaseController
 
     public function addNewView()
     {
+        $id = $this->request->param('id', 0, 'intval');
+        $gathering_account_setting = Db::name('gathering_account_setting')->where([
+            'id' => $id
+        ])->find();
+        $this->assign($gathering_account_setting);
+        // $this->assign($id);
         // 模板文件不存在:themes/admin_simpleboot3/admin\system_access\add_new_view.html //addNewView
         // 模板文件不存在:themes/admin_simpleboot3/admin\system_access\addnewview.html //addnewview
         // 方法不存在:app\admin\controller\SystemAccessController->addnewview()
