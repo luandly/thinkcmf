@@ -1,12 +1,12 @@
-<include file="public@header" />
+<include file="public@header"/>
 </head>
 <body>
 <div class="wrap">
     <ul class="nav nav-tabs">
-        <li ><a>系统模块</a></li>
-        <li ><a href="{:url('systemAccess/index')}">收款账户设置</a></li>
-        <li class="active"><a href="{:url('systemAccess/addView')}">{:lang('ADD')}新渠道</a></li>
-        <li ><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADD')}金流设置{:lang('ACTIONS')}</a></li>
+        <li><a>系统模块</a></li>
+        <li><a href="{:url('systemAccess/index')}">收款账户设置</a></li>
+        <li class="active"><a href="{:url('systemAccess/addView')}">编辑</a></li>
+        <li><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADD')}金流设置{:lang('ACTIONS')}</a></li>
     </ul>
     <form method="post"
           class="form-horizontal js-ajax-form  margin-top-20"
@@ -16,7 +16,7 @@
                     class="form-required">*</span>收款渠道类别</label>
             <div class="col-md-6 col-sm-10">
                 <input type="text" class="form-control" id="input-channelType"
-                       name="channel_type">
+                       value="{$channel_type}" name="channel_type">
             </div>
         </div>
         <div class="form-group">
@@ -24,7 +24,7 @@
                     class="form-required">*</span>收款渠道账户</label>
             <div class="col-md-6 col-sm-10">
                 <input type="text" class="form-control" id="input-channelAccountNum"
-                       name="channel_account_num" placeholder="******">
+                       value="{$channel_account_num}" name="channel_account_num" placeholder="******">
             </div>
         </div>
         <div class="form-group">
@@ -32,7 +32,7 @@
                     class="form-required">*</span>收款账户备注</label>
             <div class="col-md-6 col-sm-10">
                 <input type="text" class="form-control" id="input-description"
-                       name="description" placeholder="******">
+                       value="{$description}" name="description" placeholder="******">
             </div>
         </div>
 
@@ -41,7 +41,7 @@
                     class="form-required">*</span>累计存款次数</label>
             <div class="col-md-6 col-sm-10">
                 <input type="text" class="form-control" id="input-grandTotalDepositTimes"
-                       name="grand_total_deposit_times">
+                       value="{$grand_total_deposit_times}" name="grand_total_deposit_times">
             </div>
         </div>
 
@@ -50,6 +50,7 @@
                     class="form-required">*</span>累计存款金额</label>
             <div class="col-md-6 col-sm-10">
                 <input type="text" class="form-control" id="input-grandTotalAmountDeposited"
+                       value="{$grand_total_amount_deposited}"
                        name="grand_total_amount_deposited">
             </div>
         </div>
@@ -58,7 +59,7 @@
             <label for="input-usedStatus" class="col-sm-2 control-label"><span
                     class="form-required">*</span>使用状态</label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-usedStatus"
+                <input type="text" class="form-control" id="input-usedStatus" value="{$used_status}"
                        name="used_status">
             </div>
         </div>
@@ -67,7 +68,7 @@
             <label for="input-createTime" class="col-sm-2 control-label"><span
                     class="form-required">*</span>账户创建时间</label>
             <div class="col-md-6 col-sm-10">
-                <input type="text" class="form-control" id="input-createTime"
+                <input type="text" class="form-control" id="input-createTime" value="{$create_time}"
                        name="create_time">
             </div>
         </div>
@@ -75,6 +76,7 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
+                <input type="hidden" name="id" value="{$id}">
                 <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('ADD')}</button>
             </div>
         </div>

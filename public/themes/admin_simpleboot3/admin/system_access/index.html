@@ -5,7 +5,7 @@
 <div class="wrap js-check-wrap">
     <ul class="nav nav-tabs">
         <li ><a>系统模块{$page}</a></li>
-        <li class="active"><a href="{:url('systemAccess/index')}">{:lang('ADMIN_USER_INDEX')}</a></li>
+        <li class="active"><a href="{:url('systemAccess/index')}">收款账户设置</a></li>
         <li ><a href="{:url('systemAccess/addView')}"> 新建渠道</a></li>
         <li><a href="{:url('systemAccess/channelTypeSetting')}">{:lang('ADD')}金流设置{:lang('ACTIONS')}</a></li>
     </ul>
@@ -55,13 +55,15 @@
                 <td>{$vo.used_status}</td>
                 <td>{$vo.is_active}</td>
                 <td>{$vo.description}</td>
-                <td><eq name="vo.id" value="2"> 编辑 禁用 删除 <else /> <a
-                        href="javascript:parent.openIframeLayer('{:url('order/edit',array('id'=>$vo['id']))}','钩子{$vo.is_active}插件管理',{});">编辑</a>
+                <td><eq name="vo.id" value="2"> 编辑 禁用 删除
+                    <else/>
+                    <a
+                            href="{:url('systemAccess/edit',array('id'=>$vo['id']))}">编辑</a>
                     <eq name="vo.is_active" value="1"> <a
                             href="{:url('route/ban',array('id'=>$vo['id']))}"
                             class="js-ajax-dialog-btn" data-msg="确定禁用吗？">禁用</a> <else /> <a
-                            href="{:url('route/open',array('id'=>$vo['id']))}"
-                            class="js-ajax-dialog-btn" data-msg="确定启用吗？">启用</a> </eq> <a
+                            href="{:url('systemAccess/addnewview',array('id'=>$vo['id']))}"
+                            >设置</a> </eq> <a
                             href="{:url('order/delete',array('id'=>$vo['id']))}"
                             class="js-ajax-delete">删除</a> </eq></td>
             </tr>
