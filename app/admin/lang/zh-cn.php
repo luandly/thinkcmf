@@ -178,5 +178,9 @@ return [
     "GATHERING_ACCOUNT_SETTING__DESCRIPTION" => '备注',
     "GATHERING_ACCOUNT_SETTING__MODIFYTIME" => '最后存款时间',
     "GATHERING_ACCOUNT_SETTING__SALESID" => '销售人员ID',
+
+    // 系统模块 账户列表
+    "CLASS" => '分类',
+    "ACCOUNT" => '账号'
 ];
 
