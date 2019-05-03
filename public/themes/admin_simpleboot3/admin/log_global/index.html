@@ -1,0 +1,48 @@
+<include file="public@header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a>日志记录</a></li>
+			<li class="active"><a href="{:url('LogGlobal/index')}">全局日志</a></li>
+		</ul>
+		<form class="well form-inline margin-top-20" method="post"
+			action="{:url('UserAccount/index')}">
+			用户名: <input type="text" class="form-control" name="user_login"
+				style="width: 120px;" value="{:input('request.user_login/s','')}"
+				placeholder="请输入{:lang('USERNAME')}"> 邮箱: <input type="text"
+				class="form-control" name="user_email" style="width: 120px;"
+				value="{:input('request.user_email/s','')}"
+				placeholder="请输入{:lang('EMAIL')}"> <input type="submit"
+				class="btn btn-primary" value="搜索" />
+		</form>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="50">ID</th>
+					<th>记录时间</th>
+					<th>操作类型</th>
+					<th>IP</th>
+					<th>{:lang('USERNAME')}</th>
+					<th>描述</th>
+				</tr>
+			</thead>
+			<tbody>
+				<foreach name="users" item="vo">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{:date('Y-m-d H:i:s',$vo['last_visit_time'])}</td>
+					<td>{$vo.object}</td>
+					<td>{$vo.ip}</td>
+					<td>{$vo.user_nickname}</td>
+					<td>{$vo.action}</td>
+				</tr>
+				</foreach>
+			</tbody>
+
+		</table>
+		<div class="pagination">{$page}</div>
+	</div>
+	<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
