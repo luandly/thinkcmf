@@ -7,14 +7,18 @@
 			<li class="active"><a href="{:url('LogGlobal/index')}">全局日志</a></li>
 		</ul>
 		<form class="well form-inline margin-top-20" method="post"
-			action="{:url('UserAccount/index')}">
-			用户名: <input type="text" class="form-control" name="user_login"
+			action="{:url('LogGlobal/index')}">
+			时间: <input type="text" class="form-control js-bootstrap-datetime"
+				name="last_visit_time" value="{$start_time|default=''}"
+				style="width: 140px;" autocomplete="off"> 用户名: <input
+				type="text" class="form-control" name="user_login"
 				style="width: 120px;" value="{:input('request.user_login/s','')}"
-				placeholder="请输入{:lang('USERNAME')}"> 邮箱: <input type="text"
-				class="form-control" name="user_email" style="width: 120px;"
-				value="{:input('request.user_email/s','')}"
-				placeholder="请输入{:lang('EMAIL')}"> <input type="submit"
-				class="btn btn-primary" value="搜索" />
+				placeholder="请输入{:lang('USERNAME')}"> IP: <input type="text"
+				class="form-control" name="ip" style="width: 120px;"
+				value="{:input('request.ip/s','')}" placeholder="请输入{:lang('IP')}">
+			模糊查询: <input type="text" class="form-control" name="keyword"
+				style="width: 120px;"> <input type="submit"
+				class="btn btn-success" value="搜索" />
 		</form>
 		<table class="table table-hover table-bordered">
 			<thead>
