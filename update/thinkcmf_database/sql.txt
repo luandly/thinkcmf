@@ -79,3 +79,7 @@ CREATE TABLE `meitu_black_white_lists` (
   `delivery_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='黑白名单管理表';
+
+
+/**mysql自增ID起始值修改方法*/
+alter table meitu_order AUTO_INCREMENT=6;
