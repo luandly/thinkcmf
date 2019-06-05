@@ -83,3 +83,4 @@ CREATE TABLE `meitu_black_white_lists` (
 
 /**mysql自增ID起始值修改方法*/
 alter table meitu_order AUTO_INCREMENT=6;
+/** 用户、角色、权限表的关系 https://blog.csdn.net/sinat_33536912/article/details/54573966**/
