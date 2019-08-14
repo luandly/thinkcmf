@@ -528,4 +528,40 @@ https://www.kancloud.cn/thinkcmf/doc/327443
 * 增加插件钩子管理
 * 完善前台模板
 
+#### 宝塔面板常用文件路径
 
+废话不多，直接上干货，都是些开发一键脚本必备的文件路径集：
+
+1.PHP多版本路径：
+
+/www/server/php/53/
+ /www/server/php/54/
+ /www/server/php/56/
+ /www/server/php/70/
+ /www/server/php/71/
+
+2.Nginx默认路径：
+
+/www/server/nginx/
+
+3.Nginx站点配置文件路径：  sudo chmod -R 777 panel
+
+/www/server/panel/vhost/nginx/
+
+4.Nginx站点伪静态路径：
+
+/www/server/panel/vhost/rewrite/
+
+5.Nginx面板默认路径：
+
+/www/server/panel/
+
+6.PHP7.1默认插件路径：
+
+/www/server/php/71/ext/
+
+7.宝塔官方插件安装脚本：
+
+wget -O ext.sh http://125.88.182.172:5880/ext/ext.sh;sh ext.sh
+
+官方插件地址：https://www.bt.cn/bbs/forum.php?mod=viewthread&tid=517
