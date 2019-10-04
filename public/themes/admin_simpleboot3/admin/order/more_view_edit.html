@@ -1,0 +1,120 @@
+<include file="public@header"
+         xmlns:border="http://www.w3.org/1999/xhtml"
+         xmlns:border="http://www.w3.org/1999/xhtml"/>
+
+<script type="text/javascript">
+
+    //模拟一段JSON数据，实际要从数据库中读取  
+    var per = [
+        {id:001,name:'张珊',job:'学生'},
+        {id:002,name:'李斯',job:'教师'},
+        {id:003,name:'王武',job:'经理'}
+    ];   
+
+    $(function(){
+        $("#addOneRow").click(function(){
+            var index = 0;
+            index++;
+            var tempTr=$("tr:first").clone(true);
+            $("tr:last").after(tempTr);
+            $("tr:last").attr('name', 'contractor[' + index + '].names').end()
+            $("tr:last > td > #name").val("");
+            $("tr:last > td > #address").val("");
+        });
+        $(".delOneRow").click(function() {
+            if ($("tr").length < 2) {
+                alert("至少保留一行!");
+            }
+            else{
+                if (confirm("确认删除?")) {
+                    $(this).parent().parent().remove();
+                }
+            }
+        });
+
+        var tbody = document.getElementById('tbMain');
+
+        for(var i = 0;i < per.length; i++){ //遍历一下json数据  
+            var trow = getDataRow(per[i]); //定义一个方法,返回tr数据  
+            tbody.appendChild(trow);
+        } 
+
+    });
+
+    function getDataRow(h){
+        var row = document.createElement('tr'); //创建行  
+
+        var idCell = document.createElement('td'); //创建第一列id  
+        idCell.innerHTML = h.id; //填充数据  
+        row.appendChild(idCell); //加入行  ，下面类似  
+
+        var nameCell = document.createElement('td');//创建第二列name  
+        nameCell.innerHTML = h.name;
+        row.appendChild(nameCell);
+
+        var jobCell = document.createElement('td');//创建第三列job  
+        jobCell.innerHTML = h.job;
+        row.appendChild(jobCell);
+
+        var delCell = document.createElement('td');//创建第四列，操作列  
+        row.appendChild(delCell);
+        var btnDel = document.createElement('input'); //创建一个input控件  
+        btnDel.setAttribute('type','input'); //type="button"  
+        btnDel.setAttribute('name','namevalue');
+
+        //到这里，json中的数据已经添加到表格中，下面为每行末尾添加删除按钮  
+
+        var delCell = document.createElement('td');//创建第四列，操作列  
+        row.appendChild(delCell);
+        var btnDel = document.createElement('input'); //创建一个input控件  
+        btnDel.setAttribute('type','button'); //type="button"  
+        btnDel.setAttribute('value','删除');
+
+        //删除操作  
+        btnDel.οnclick=function(){
+            if(confirm("确定删除这一行嘛？")){
+                //找到按钮所在行的节点，然后删掉这一行  
+                this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+                //btnDel - td - tr - tbody - 删除(tr)  
+                //刷新网页还原。实际操作中，还要删除数据库中数据，实现真正删除  
+            }
+        }
+        delCell.appendChild(btnDel);  //把删除按钮加入td，别忘了  
+
+        return row; //返回tr数据      
+    }
+</script>
+</head>
+<body>
+<div class="wrap js-check-wrap">
+    <ul class="nav nav-tabs">
+        <li ><a href="{:url('backGround/activeView')}">设置</a></li>
+        <li class="active"><a href="{:url('backGround/addMoreView')}">test</a></li>
+    </ul>
+    <form action="{:url('backGround/addMoreViewPost')}" method="post" class="margin-top-20">
+    <table border="1">
+
+        <tr>
+            <td>姓名:</td>
+            <td><input type="text" id="name"  name="names[]" /></td>
+            <td>地址:</td>
+            <td><input type="text" id="address"  name="address[]"  ></td>
+            <td><input type="button" class="delOneRow" value="删除" /></td>
+        </tr>
+
+
+        <tbody id="tbMain"></tbody>
+
+    </table>
+    <input type="button" id="addOneRow" value="添加一行" />
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary js-ajax-submit">{:lang('OK')}</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script src="__STATIC__/js/admin.js"></script>
+</body>
+</html>
